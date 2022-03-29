@@ -9,7 +9,7 @@ packer {
 
 variable "version" {
   type    = string
-  default = "1.0.0"
+  default = "1.0.1"
 }
 
 data "amazon-ami" "ubuntu-focal-east" {
@@ -24,7 +24,7 @@ data "amazon-ami" "ubuntu-focal-east" {
 source "amazon-ebs" "basic-example-east" {
   region         = "us-east-2"
   source_ami     = data.amazon-ami.ubuntu-focal-east.id
-  instance_type  = "t2.small"
+  instance_type  = "t2.micro"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
   ami_name       = "packer_AWS_{{timestamp}}_v${var.version}"
@@ -42,7 +42,7 @@ data "amazon-ami" "ubuntu-focal-west" {
 source "amazon-ebs" "basic-example-west" {
   region         = "us-west-1"
   source_ami     = data.amazon-ami.ubuntu-focal-west.id
-  instance_type  = "t2.small"
+  instance_type  = "t2.micro"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
   ami_name       = "packer_AWS_{{timestamp}}_v${var.version}"
