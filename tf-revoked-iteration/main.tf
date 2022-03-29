@@ -12,6 +12,7 @@ data "hcp_packer_image" "ubuntu_us_east_2" {
 }
 
 resource "aws_instance" "app_server" {
+// If the requested iteration_id is equal to(==) "error_revoked" then(?) the count is 0, else(:), the count is 1
   count = data.hcp_packer_image.ubuntu_us_east_2.cloud_image_id == "error_revoked" ? 0 : 1
 
   ami           = data.hcp_packer_image.ubuntu_us_east_2.cloud_image_id

@@ -31,7 +31,7 @@ source "amazon-ebs" "application-east" {
 
   region         = "us-east-2"
   source_ami     = data.hcp-packer-image.ubuntu-east.id
-  instance_type  = "t2.small"
+  instance_type  = "t2.micro"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
 
@@ -45,7 +45,7 @@ source "amazon-ebs" "application-west" {
 
   region         = "us-west-1"
   source_ami     = data.hcp-packer-image.ubuntu-west.id
-  instance_type  = "t2.small"
+  instance_type  = "t2.micro"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
 
